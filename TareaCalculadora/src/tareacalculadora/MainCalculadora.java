@@ -8,7 +8,7 @@ package tareacalculadora;
  *
  * @author Usuario
  */
-public class TareaCalculadora {
+public class MainCalculadora {
 
     /**
      * @param args the command line arguments
