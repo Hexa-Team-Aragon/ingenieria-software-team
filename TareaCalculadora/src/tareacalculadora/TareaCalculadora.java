@@ -14,6 +14,15 @@ public class TareaCalculadora {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Calculadora calculadora1 = new Calculadora();
+        int resultadoSuma = calculadora1.suma(5, 4);
+        System.out.println("El resultado de la suma es: " +resultadoSuma);
+        int resultadoResta = calculadora1.resta(35, 44);
+        System.out.println("El resultado de la resta es: " +resultadoResta);
+        int resultadoMultiplicacion = calculadora1.multiplicacion(445, 43);
+        System.out.println("El resultado de la multiplicacion es: " +resultadoMultiplicacion);
+        float resultadoDivision = calculadora1.division(223, 3333);
+        System.out.println("El resultado de la division es: " +resultadoDivision);
     }
 
 }
