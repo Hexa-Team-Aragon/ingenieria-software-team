@@ -4,6 +4,7 @@ import com.ico.smvc.models.Cancion;
 import com.ico.smvc.models.Playlist;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,5 +26,10 @@ public class PlayListController {
     @GetMapping("/{id}")
     public ResponseEntity<Cancion> getCancion(@PathVariable(required = true, name = "id") int id) {
         return new ResponseEntity<>(playlist.buscarId(id), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Boolean> eliminarCancion(@PathVariable(required = true, name = "id") int id) {
+        return new ResponseEntity<>(playlist.eliminar(id), HttpStatus.OK);
     }
 }

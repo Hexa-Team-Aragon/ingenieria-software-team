@@ -38,4 +38,11 @@ public class Playlist {
         return null;
     }
 
+    public boolean eliminar(int id){
+        if (pl.containsKey(id)){
+            pl.remove(id);
+            return true;
+        }
+        return false;
+    }
 }
