@@ -15,7 +15,7 @@ public class PlayListController {
     public PlayListController(){
         playlist = new Playlist();
     }
-
+    //GET
     @GetMapping("/")
     public ResponseEntity<HashMap<Integer, Cancion>> getLista() {
         return new ResponseEntity<>(playlist.getPl(), HttpStatus.OK);
@@ -24,7 +24,7 @@ public class PlayListController {
     public ResponseEntity<Cancion> getCancion(@PathVariable(required = true, name = "id") int id) {
         return new ResponseEntity<>(playlist.buscarId(id), HttpStatus.OK);
     }
-
+    //POST
     @PostMapping("/agregar/")
     public ResponseEntity<Boolean> agregarCancion(@RequestBody Cancion laCancion) {
         return new ResponseEntity<>(playlist.agregar(laCancion), HttpStatus.OK);
