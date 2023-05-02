@@ -1,6 +1,6 @@
 package com.ico.smvc.controller;
 
-import com.ico.smvc.models.Cancion;
+import com.ico.smvc.models.Music;
 import com.ico.smvc.models.Playlist;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,23 +15,27 @@ public class PlayListController {
     public PlayListController(){
         playlist = new Playlist();
     }
+
     //GET
     @GetMapping("/")
-    public ResponseEntity<HashMap<Integer, Cancion>> getLista() {
+    public ResponseEntity<HashMap<Integer, Music>> getMusic() {
         return new ResponseEntity<>(playlist.getPl(), HttpStatus.OK);
     }
+
     @GetMapping("/{id}")
-    public ResponseEntity<Cancion> getCancion(@PathVariable(required = true, name = "id") int id) {
-        return new ResponseEntity<>(playlist.buscarId(id), HttpStatus.OK);
+    public ResponseEntity<Music> getMusicByKey(@PathVariable(required = true, name = "id") int id) {
+        return new ResponseEntity<>(playlist.getMusicByKey(id), HttpStatus.OK);
     }
+
     //POST
     @PostMapping("/agregar/")
-    public ResponseEntity<Boolean> agregarCancion(@RequestBody Cancion laCancion) {
-        return new ResponseEntity<>(playlist.agregar(laCancion), HttpStatus.OK);
+    public ResponseEntity<Boolean> addMusic(@RequestBody Music laCancion) {
+        return new ResponseEntity<>(playlist.addMusic(laCancion), HttpStatus.OK);
     }
-    //Delete
+
+    //DELETE
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Boolean> eliminarCancion(@PathVariable(required = true, name = "id") int id) {
-        return new ResponseEntity<>(playlist.eliminar(id), HttpStatus.OK);
+    public ResponseEntity<Boolean> deleteMusic(@PathVariable(required = true, name = "id") int id) {
+        return new ResponseEntity<>(playlist.deleteMusic(id), HttpStatus.OK);
     }
 }
