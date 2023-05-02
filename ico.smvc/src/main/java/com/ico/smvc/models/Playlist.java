@@ -45,4 +45,12 @@ public class Playlist {
         }
         return false;
     }
+
+    public boolean agregar(Cancion c){
+        int id;
+        id = pl.size()+1;
+        pl.put(id, c);
+        return true;
+    }
+
 }
