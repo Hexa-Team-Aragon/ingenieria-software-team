@@ -22,20 +22,26 @@ public class PlayListController {
         return new ResponseEntity<>(playlist.getPl(), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Music> getMusicByKey(@PathVariable(required = true, name = "id") int id) {
-        return new ResponseEntity<>(playlist.getMusicByKey(id), HttpStatus.OK);
+    @GetMapping("/{key}")
+    public ResponseEntity<Music> getMusicByKey(@PathVariable(required = true, name = "key") int key) {
+        return new ResponseEntity<>(playlist.getMusicByKey(key), HttpStatus.OK);
     }
 
     //POST
-    @PostMapping("/agregar/")
-    public ResponseEntity<Boolean> addMusic(@RequestBody Music laCancion) {
-        return new ResponseEntity<>(playlist.addMusic(laCancion), HttpStatus.OK);
+    @PostMapping("/add/")
+    public ResponseEntity<Boolean> addMusic(@RequestBody Music music) {
+        return new ResponseEntity<>(playlist.addMusic(music), HttpStatus.OK);
     }
 
     //DELETE
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Boolean> deleteMusic(@PathVariable(required = true, name = "id") int id) {
-        return new ResponseEntity<>(playlist.deleteMusic(id), HttpStatus.OK);
+    @DeleteMapping("/delete/{key}")
+    public ResponseEntity<Boolean> deleteMusic(@PathVariable(required = true, name = "key") int key) {
+        return new ResponseEntity<>(playlist.deleteMusic(key), HttpStatus.OK);
+    }
+
+    //PATCH
+    @PatchMapping("/patch/")
+    public ResponseEntity<Music> patchMusic(@RequestBody int key ,@RequestBody Music music){
+        return new ResponseEntity<>(playlist.updateMusic(key,music),HttpStatus.OK);
     }
 }

@@ -44,11 +44,14 @@ public class Playlist {
         return false;
     }
 
-    public boolean addMusic(Music c){
-        int id;
-        id = pl.size()+1;
-        pl.put(id, c);
+    public boolean addMusic(Music music){
+        pl.put(pl.size()+1, music);
         return true;
+    }
+
+    public Music updateMusic(int key, Music music){
+        pl.get(key).update(music);
+        return music;
     }
 
 }

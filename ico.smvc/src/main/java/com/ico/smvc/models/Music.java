@@ -14,4 +14,13 @@ public class Music {
     private String gender;
     private int age;
     private String image;
+
+    public void update(Music music){
+        this.name = music.getName();
+        this.album = music.getAlbum();
+        this.artist = music.getArtist();
+        this.gender = music.getGender();
+        this.age = music.getAge();
+        this.image = music.getImage();
+    }
 }
