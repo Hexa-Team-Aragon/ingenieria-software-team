@@ -53,7 +53,7 @@
 
 <div class="d-flex flex-column">
     <div>
-        <a class="btn btn-dark ms-5 my-3" href="#" role="button">Agregar</a>
+        <a class="btn btn-dark ms-5 my-3" href="http://localhost:8888/inicio/agregar" role="button">Agregar</a>
     </div>
     <div class="d-flex justify-content-center">
         <div class="col-11 ">
@@ -79,7 +79,7 @@
 
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Editar</a></li>
+                                <li><a class="dropdown-item" th:href="@{http://localhost:8888/view/editar/{id}(id=${s.id})}">Editar</a></li>
                                 <li><a class="dropdown-item" th:href="@{http://localhost:8888/delete/{id}(id=${s.id})}">Eliminar</a></li>
                             </ul>
                         </div>

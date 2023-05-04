@@ -65,7 +65,7 @@ public class musicaController {
         return "redirect:/inicio";
     }
 
-    @PatchMapping("/update")
+    @PostMapping("/update")
     public String updateSong(
             @ModelAttribute("id") int id,
             @ModelAttribute("name") String name,
@@ -77,7 +77,7 @@ public class musicaController {
             Model model
     ) {
         Song song = new Song(id,name,album,artist,genre,year,urlImage);
-        String url = "http://localhost:8090/api/playlist/create";
+        String url = "http://localhost:8090/api/playlist/update";
 
         Mono<String> resultMono = webClient.patch()
                 .uri(url)
@@ -106,8 +106,16 @@ public class musicaController {
         return "agregar";
     }
 
-    @GetMapping("/inicio/editar")
-    public String editarCancion(){
+    @GetMapping("/view/editar/{id}")
+    public String editViewSong(@PathVariable int id, Model model){
+        String url = "http://localhost:8090/api/playlist/{id}";
+        Mono<Song> songMono = webClient.get()
+                .uri(url,id)
+                .retrieve()
+                .bodyToMono(Song.class);
+
+        Song result = songMono.block();
+        model.addAttribute("song",result);
         return "editar";
     }
 }
