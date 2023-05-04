@@ -90,10 +90,6 @@ public class musicaController {
         return "redirect:/inicio";
     }
 
-    @GetMapping("/inicio/canciones")
-    public String getCanciones(){
-        return "canciones";
-    }
 
     private List<Song> getSongs(){
         String url = "http://localhost:8090/api/playlist";
@@ -103,5 +99,15 @@ public class musicaController {
                 .bodyToFlux(new ParameterizedTypeReference<Song>() {
                 });
         return songsFlux.collectList().block();
+    }
+
+    @GetMapping("/inicio/agregar")
+    public String agregarCancion(){
+        return "agregar";
+    }
+
+    @GetMapping("/inicio/editar")
+    public String editarCancion(){
+        return "editar";
     }
 }
