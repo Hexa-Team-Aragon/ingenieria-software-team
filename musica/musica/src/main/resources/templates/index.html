@@ -60,18 +60,18 @@
             <table class="table table-hover mt-1 ">
                 <tbody>
 
-                <tr class="table-dark">
+                <tr th:each="s : ${songs}" class="table-dark">
                     <td style="width:4%;">
                         <div>
-                            <img src="https://kpoplat.com/wp-content/uploads/2020/12/astro-logo.png" class="img-fluid rounded" alt="...">
+                            <img th:src="${s.urlImage}"class="img-fluid rounded" alt="...">
                         </div>
 
                     </td>
-                    <td class="align-middle">After Midnight</td>
-                    <td class="align-middle">Switch On</td>
-                    <td class="align-middle">ASTRO</td>
-                    <td class="align-middle">K-pop</td>
-                    <td class="align-middle">2021</td>
+                    <td th:text="${s.name}" class="align-middle"></td>
+                    <td th:text="${s.album}" class="align-middle"></td>
+                    <td th:text="${s.artist}" class="align-middle"></td>
+                    <td th:text="${s.genre}" class="align-middle"></td>
+                    <td th:text="${s.year}" class="align-middle"></td>
                     <td class="align-middle">
                         <!-- Example single danger button -->
                         <div class="btn-group">
@@ -80,7 +80,7 @@
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Editar</a></li>
-                                <li><a class="dropdown-item" href="#">Eliminar</a></li>
+                                <li><a class="dropdown-item" th:href="@{http://localhost:8888/delete/{id}(id=${s.id})}">Eliminar</a></li>
                             </ul>
                         </div>
                     </td>

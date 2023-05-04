@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.result.view.RedirectView;
 import reactor.core.publisher.Flux;
 import org.springframework.ui.Model;
 import reactor.core.publisher.Mono;
@@ -28,8 +29,8 @@ public class musicaController {
         return "index";
     }
 
-    @DeleteMapping("/delete")
-    public String deleteSong(@ModelAttribute("id") int id, Model model){
+    @GetMapping("/delete/{id}")
+    public String deleteSong(@PathVariable int id, Model model){
         String url = "http://localhost:8090/api/playlist/delete/{id}";
         Mono<Void> resultMono = webClient.delete()
                 .uri(url,id)
@@ -37,8 +38,7 @@ public class musicaController {
                 .bodyToMono(Void.class);
         resultMono.block();
 
-        model.addAttribute("songs",getSongs());
-        return "index";
+        return "redirect:/inicio";
     }
 
     @PostMapping("/add")
@@ -62,8 +62,7 @@ public class musicaController {
                 .bodyToMono(String.class);
         resultMono.block();
 
-        model.addAttribute("songs",getSongs());
-        return "index";
+        return "redirect:/inicio";
     }
 
     @PatchMapping("/update")
@@ -88,8 +87,7 @@ public class musicaController {
                 .bodyToMono(String.class);
         resultMono.block();
 
-        model.addAttribute("songs",getSongs());
-        return "index";
+        return "redirect:/inicio";
     }
 
     @GetMapping("/inicio/canciones")
