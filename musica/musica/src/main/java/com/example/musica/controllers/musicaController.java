@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 @Controller
+
 public class musicaController {
+
     @GetMapping("/inicio")
     public String getindex(){
         return "index";
