@@ -11,6 +11,7 @@ import lombok.*;
 @Entity
 @Table(name = "canciones")
 public class Song {
+    @Column
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
