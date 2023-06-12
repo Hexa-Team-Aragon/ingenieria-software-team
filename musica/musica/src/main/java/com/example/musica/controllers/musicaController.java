@@ -99,7 +99,7 @@ public class musicaController {
     public String viewAddSong(){ return "agregar"; }
 
     @GetMapping("/view/editar/{id}")
-    public String editViewSong(@PathVariable int id, Model model){
+    public String editViewSong(@PathVariable int id, Model model) {
         String url = "http://localhost:8090/api/playlist/{id}";
         Mono<Song> songMono = webClient.get()
                 .uri(url,id)
@@ -111,9 +111,30 @@ public class musicaController {
         return "editar";
     }
 
-    @GetMapping("/inicio/detallesCancion")
-    public String getSong(Model model){ return "detallesCancion"; }
+    @GetMapping("/inicio/detallesCancion/{id}")
+    public String getSong(@PathVariable int id, Model model) {
+        String url = "http://localhost:8090/api/playlist/{id}";
+        Mono<Song> songMono = webClient.get()
+                .uri(url,id)
+                .retrieve()
+                .bodyToMono(Song.class);
 
-    @GetMapping("/inicio/detallesAlbum")
-    public String getAlbum(Model model){ return "detallesAlbum"; }
+        Song result = songMono.block();
+        model.addAttribute("song",result);
+        return "detallesCancion";
+    }
+
+    @GetMapping("/inicio/detallesAlbum/{album}")
+    public String getAlbum(@PathVariable String album, Model model) {
+        String url = "http://localhost:8090/api/playlist/album/{album}";
+        Flux<Song> songsFlux = webClient.get()
+                .uri(url,album)
+                .retrieve()
+                .bodyToFlux(new ParameterizedTypeReference<Song>() {
+                });
+
+        List<Song> songs = songsFlux.collectList().block();
+        model.addAttribute("songs", songs);
+        return "detallesAlbum";
+    }
 }

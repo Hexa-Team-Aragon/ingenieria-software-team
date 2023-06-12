@@ -57,7 +57,7 @@
                     <td th:text="${s.name}" class="align-middle"></td>
 
                     <td class="align-middle">
-                        <a href="http://localhost:8888/inicio/detallesAlbum" class="text-decoration-none">
+                        <a th:href="@{http://localhost:8888/inicio/detallesAlbum/{album}(album=${s.album})}" class="text-decoration-none">
                             <p th:text="${s.album}" class="m-0 text-white"></p>
                         </a>
                     </td>
@@ -73,7 +73,7 @@
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" th:href="@{http://localhost:8888/view/editar/{id}(id=${s.id})}">Editar</a></li>
-                                <li><a class="dropdown-item" href="http://localhost:8888/inicio/detallesCancion">Detalles</a></li>
+                                <li><a class="dropdown-item" th:href="@{http://localhost:8888/inicio/detallesCancion/{id}(id=${s.id})}">Detalles</a></li>
                                 <li><a class="dropdown-item" th:href="@{http://localhost:8888/delete/{id}(id=${s.id})}">Eliminar</a></li>
                             </ul>
                         </div>

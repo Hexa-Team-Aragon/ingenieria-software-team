@@ -18,32 +18,29 @@
             <div class="card-header py-3" style="background-color: #93C47D;"></div>
             <div class="card-body ">
                 <div class="d-flex flex-row justify-content-center" >
-                    <h1 align="center">Nombre del álbum</h1>
+                    <h1 th:text="${songs[0].album}" align="center"></h1>
                 </div>
                 <div class="d-flex flex-row my-2">
                     <div class="d-flex me-4 ms-2" style="width:35%; ">
-                        <img th:src="@{/images/fondoMusica.jpg}"  class="img-fluid d-inline-block">
+                        <img th:src="${songs[0].urlImage}"  class="img-fluid d-inline-block">
                     </div>
                     <div class="d-flex flex-fill">
                         <form action="/add" method="POST" class="p-2 d-flex flex-column flex-fill align-content-between ">
                             <div class="form-group mt-3 d-flex justify-content-between flex-row">
                                 <label class="mb-1 col-2" for="artist">Artista:</label>
-                                <input type="text" name="artist" id="artist" placeholder="Readonly input here..." readonly=""/><br/>
+                                <input th:value="${songs[0].artist}" type="text" name="artist" id="artist" readonly=""/><br/>
                             </div>
                             <div class="form-group mt-3 d-flex justify-content-between flex-row">
                                 <label class="mb-1 col-2" for="year">Año:</label>
-                                <input type="text" name="year" id="year" placeholder="Readonly input here..." readonly=""/><br/>
+                                <input th:value="${songs[0].year}" type="text" name="year" id="year" readonly=""/><br/>
                             </div>
                             <div class="d-flex mt-3 justify-content-center">
                                 <div class="border border-black">
                                     <table class="table table-hover m-0 py-0 table-striped table-success">
                                         <tbody>
-                                            <tr>
+                                            <tr th:each="s : ${songs}">
                                                 <td class="align-middle m-0 py-0">
-                                                    <p class="m-0">no. de canción</p>
-                                                </td>
-                                                <td class="align-middle m-0 py-0">
-                                                    <p class="m-0">Nombre de la canción</p>
+                                                    <p th:text="${s.name}" class="m-0"></p>
                                                 </td>
                                             </tr>
                                         </tbody>

@@ -3,12 +3,10 @@ package com.ico.smvc.controllers;
 import com.ico.smvc.models.entities.Song;
 import com.ico.smvc.persistence.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,7 +48,7 @@ public class SongsController {
 */
     @GetMapping("/playlist/album/{album}")
     public ResponseEntity<List<Song>> getAlbum(@PathVariable String album){
-        return new ResponseEntity<>(songRepo.findByalbum(album), HttpStatus.OK);
+        return new ResponseEntity<>(songRepo.findByAlbum(album), HttpStatus.OK);
     }
 
 }
