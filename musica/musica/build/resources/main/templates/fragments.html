@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
+    <link th:href="@{/css/style1.css}" rel="stylesheet">
+</head>
+<body>
+    <div th:fragment="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+            <nav class="navbar py-0">
+                <div class="container-fluid fst-italic fw-bold">
+                    <a class="navbar-brand bg-dark text-white" href="/inicio" >
+                        <img th:src="@{/images/lista.png}" class="img-fluid rounded-start d-inline-block align-text-top pe-2" style="width:8%;" >
+                        MyPlaylist
+                    </a>
+                </div>
+            </nav>
+        </nav>
+    </div>
+
+    <div th:fragment="footer">
+        <div class="bg-dark container-fluid text-white pt-4 d-flex flex-fill justify-content-center">
+            <div class="col-8 d-flex justify-content-between flex-wrap ">
+                <div style="width:30%">
+                    <h6 class="fst-italic text-center">MyPlaylist</h6>
+                    <p style="font-size:70%;" class="pb-2 m-0 text-center">Código publicado bajo la licencia MIT.</p>
+                    <p style="text-align: justify;">Crea y personaliza tu propia playlist de acuerdo con tus gustos musicales.</p>
+                </div>
+                <div>
+                    <h6 class="text-center">EQUIPO</h6>
+                    <ul>
+                        <li >Lizbeth Cortés León</li>
+                        <li class="pt-2">Osvaldo Guerra Lanuza</li>
+                        <li class="pt-2">Axel Uriel Neri Lucero</li>
+                    </ul>
+                </div>
+                <div style="width:14%; ">
+                    <h6 class="text-center">CONTACTO</h6>
+                    <div class="d-flex justify-content-between">
+                        <a href="https://www.facebook.com/lizzy.leon.5070?mibextid=ZbWKwL">
+                            <img th:src="@{/images/fb.jpg}" class="img-fluid rounded">
+                        </a>
+                        <a href="https://www.linkedin.com/in/lizbeth-cortes-leon/">
+                            <img th:src="@{/images/in.jpg}" class="img-fluid rounded">
+                        </a>
+                        <a href="https://twitter.com/liz_cortes_">
+                            <img th:src="@{/images/tw.jpg}" class="img-fluid rounded">
+                        </a>
+                    </div>
+                    <div class="d-flex justify-content-between pt-1">
+                        <a href="/#">
+                            <img th:src="@{/images/fb.jpg}" class="img-fluid rounded">
+                        </a>
+                        <a href="/#">
+                            <img th:src="@{/images/in.jpg}" class="img-fluid rounded">
+                        </a>
+                        <a href="/#">
+                            <img th:src="@{/images/tw.jpg}" class="img-fluid rounded">
+                        </a>
+                    </div>
+                    <div class="d-flex justify-content-between pt-1">
+                        <a href="/#">
+                            <img th:src="@{/images/fb.jpg}" class="img-fluid rounded">
+                        </a>
+                        <a href="/#">
+                            <img th:src="@{/images/in.jpg}" class="img-fluid rounded">
+                        </a>
+                        <a href="/#">
+                            <img th:src="@{/images/tw.jpg}" class="img-fluid rounded">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

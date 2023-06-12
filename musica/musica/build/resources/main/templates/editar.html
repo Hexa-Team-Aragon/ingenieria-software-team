@@ -10,58 +10,52 @@
     <meta charset="UTF-8">
     <title>Editar canción</title>
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white p-0">
-    <nav class="navbar ">
-        <div class="container-fluid fst-italic fw-bold">
-            <a class="navbar-brand bg-dark text-white" href="/inicio" >
-                <img th:src="@{/images/lista.png}" class="img-fluid rounded-start d-inline-block align-text-top" style="width:7%;" >
-                MyPlaylist
-            </a>
-        </div>
-    </nav>
-</nav>
+<body style="background-image: url('/images/azul.jpeg'); background-size: cover; background-repeat: no-repeat; ">
+<div th:replace="fragments::header"></div>
 
-<div class="d-flex mt-3 justify-content-center" >
-    <div class="card text-white bg-dark mb-3 col-5" >
+<div class="d-flex mt-5 justify-content-center pb-5" >
+    <div class="card text-black bg-light mb-3 border-2" style="width:50%; border-color:#6FA8DC;">
+        <div class="card-header py-3" style="background-color: #6FA8DC;"></div>
         <div class="card-body">
             <h1 align="center" >Editar canción</h1>
-            <form action="/update" method="POST" class="p-2 ">
-                <div class="form-group mt-2 d-flex justify-content-between">
+            <form action="/update" method="POST" class="py-2 px-4 ">
+                <div class="form-group mt-3 d-flex justify-content-between">
                     <label class="mb-1 col-2">Nombre:</label>
                     <input th:value="${song.name}" name="name" id="name" type="text"/><br/>
                 </div>
-                <div class="form-group mt-2 d-flex justify-content-between">
+                <div class="form-group mt-3 d-flex justify-content-between">
                     <label class="mb-1 col-2">Álbum:</label>
                     <input th:value="${song.album}" name="album" id="album" type="text"/><br/>
                 </div>
-                <div class="form-group mt-2 d-flex justify-content-between">
+                <div class="form-group mt-3 d-flex justify-content-between">
                     <label class="mb-1 col-2">Artista:</label>
                     <input th:value="${song.artist}" name="artist" id="artist" type="text"/><br/>
                 </div>
-                <div class="form-group mt-2 d-flex justify-content-between">
-                    <label class="mb-1 col-2">Género:</label>
-                    <input th:value="${song.genre}" name="genre" id="genre" type="text" /><br/>
+
+                <div class="d-flex flex-row flex-fill">
+                    <div class="form-group mt-3 d-flex flex-row flex-fill justify-content-between">
+                        <label class="mb-1" style="width:47%;">Género:</label>
+                        <input th:value="${song.genre}" name="genre" id="genre" type="text" /><br/>
+                    </div>
+                    <div class="form-group mt-3 d-flex flex-row flex-fill justify-content-end pe-2">
+                        <label class="mb-1 pe-4">Año:</label>
+                        <input th:value="${song.year}" name="year" id="year" type="text" style="width:60%;"/><br/>
+                    </div>
                 </div>
-                <div class="form-group mt-2 d-flex justify-content-between">
-                    <label class="mb-1 col-2">Año:</label>
-                    <input th:value="${song.year}" name="year" id="year" type="text" /><br/>
-                </div>
-                <div class="form-group mt-2 d-flex justify-content-between">
+                <div class="form-group mt-3 d-flex justify-content-between">
                     <label class="mb-1 col-2">URL:</label>
                     <input th:value="${song.urlImage}" name="urlImage" id="urlImage" type="text" /><br/>
                 </div>
                 <input th:value="${song.id}" type="text" name="id" id="id" style="display: none;"/><br/>
                 <div class="d-flex justify-content-between mx-5 mt-3">
-                    <input class="btn btn-success " type="submit" value="Actualizar">
-                    <a class="btn btn-danger " href="/inicio" role="button">Cancelar</a>
+                    <input class="btn btn-light align-middle rounded-1" style="border: 4px outset black; border-color:#6FA8DC;" type="submit" value="Guardar">
+                    <a class="btn btn-light align-middle rounded-1" href="/inicio" role="button" style="border: 4px outset;">Cancelar</a>
                 </div>
             </form>
         </div>
     </div>
-
-
-
 </div>
+
+<div th:replace="fragments::footer"></div>
 </body>
 </html>

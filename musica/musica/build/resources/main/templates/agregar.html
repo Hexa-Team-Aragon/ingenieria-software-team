@@ -10,57 +10,51 @@
     <meta charset="UTF-8">
     <title>Agregar canción</title>
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white p-0">
-    <nav class="navbar ">
-        <div class="container-fluid fst-italic fw-bold">
-            <a class="navbar-brand bg-dark text-white" href="/inicio" >
-                <img th:src="@{/images/lista.png}" class="img-fluid rounded-start d-inline-block align-text-top" style="width:7%;" >
-                MyPlaylist
-            </a>
-        </div>
-    </nav>
-</nav>
+<body style="background-image: url('/images/morado.jpeg'); background-size: cover; background-repeat: no-repeat; ">
+<div th:replace="fragments::header"></div>
 
-<div class="d-flex mt-3 justify-content-center" >
-    <div class="card text-white bg-dark mb-3 col-5" >
-        <div class="card-body">
-            <h1 align="center" >Agregar canción</h1>
-            <form action="/add" method="POST" class="p-2 ">
-                <div class="form-group mt-2 d-flex justify-content-between">
+<div class="d-flex mt-5 justify-content-center pb-5" >
+    <div class="card text-black bg-light mb-3 border-2" style="width:50%; border-color:#72639C;">
+        <div class="card-header py-3" style="background-color: #72639C; "></div>
+        <div class="card-body" >
+            <h1 align="center" >Agregar una canción</h1>
+            <form action="/add" method="POST" class="py-2 px-4">
+                <div class="form-group mt-3 d-flex justify-content-between">
                     <label class="mb-1 col-2">Nombre:</label>
                     <input type="text" name="name" id="name"/><br/>
                 </div>
-                <div class="form-group mt-2 d-flex justify-content-between">
+                <div class="form-group mt-3 d-flex justify-content-between">
                     <label class="mb-1 col-2">Álbum:</label>
                     <input type="text" name="album" id="album"/><br/>
                 </div>
-                <div class="form-group mt-2 d-flex justify-content-between">
+                <div class="form-group mt-3 d-flex justify-content-between">
                     <label class="mb-1 col-2">Artista:</label>
                     <input type="text" name="artist" id="artist"/><br/>
                 </div>
-                <div class="form-group mt-2 d-flex justify-content-between">
-                    <label class="mb-1 col-2">Género:</label>
-                    <input type="text" name="genre" id="genre"/><br/>
+                <div class="d-flex flex-row flex-fill">
+                    <div class="form-group mt-3 d-flex flex-row flex-fill justify-content-between">
+                        <label class="mb-1" style="width:47%;">Género:</label>
+                        <input type="text" name="genre" id="genre"/><br/>
+                    </div>
+                    <div class="form-group mt-3 d-flex flex-row flex-fill justify-content-end pe-2">
+                        <label class="mb-1 pe-4">Año:</label>
+                        <input type="text" name="year" id="year" style="width:60%;"/><br/>
+                    </div>
                 </div>
-                <div class="form-group mt-2 d-flex justify-content-between">
-                    <label class="mb-1 col-2">Año:</label>
-                    <input type="text" name="year" id="year"/><br/>
-                </div>
-                <div class="form-group mt-2 d-flex justify-content-between">
+
+                <div class="form-group mt-3 d-flex justify-content-between">
                     <label class="mb-1 col-2">URL:</label>
                     <input type="text" name="urlImage" id="urlImage"/><br/>
                 </div>
                 <div class="d-flex justify-content-between mx-5 mt-3">
-                    <input class="btn btn-success " type="submit" value="Agregar">
-                    <a class="btn btn-danger " href="/inicio" role="button">Cancelar</a>
+                    <input class="btn btn-light align-middle rounded-1" style="border: 4px outset black; border-color:#72639C;" type="submit" value="Guardar">
+                    <a class="btn btn-light align-middle rounded-1" href="/inicio" role="button" style="border: 4px outset;">Cancelar</a>
                 </div>
             </form>
         </div>
     </div>
-
-
-
 </div>
+
+<div th:replace="fragments::footer"></div>
 </body>
 </html>

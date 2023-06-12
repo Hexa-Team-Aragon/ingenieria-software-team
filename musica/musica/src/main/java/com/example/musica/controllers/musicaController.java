@@ -110,4 +110,10 @@ public class musicaController {
         model.addAttribute("song",result);
         return "editar";
     }
+
+    @GetMapping("/inicio/detallesCancion")
+    public String getSong(Model model){ return "detallesCancion"; }
+
+    @GetMapping("/inicio/detallesAlbum")
+    public String getAlbum(Model model){ return "detallesAlbum"; }
 }
