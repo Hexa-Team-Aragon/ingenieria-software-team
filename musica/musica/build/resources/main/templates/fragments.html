@@ -11,35 +11,41 @@
     <div th:fragment="header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
             <nav class="navbar py-0">
-                <div class="container-fluid fst-italic fw-bold">
-                    <a class="navbar-brand bg-dark text-white" href="/inicio" >
-                        <img th:src="@{/images/lista.png}" class="img-fluid rounded-start d-inline-block align-text-top pe-2" style="width:8%;" >
-                        MyPlaylist
+                <div class="d-flex flex-row justify-content-start">
+                    <a class="navbar-brand bg-dark text-white d-flex" href="/inicio" >
+                        <div class="container-fluid d-flex">
+                            <img th:src="@{/images/lista.png}" class="img-fluid rounded-start d-inline-block align-text-top" style="width:3vw;">
+                        </div>
+                        <div class="container-fluid d-flex p-0">
+                            <p class=" fst-italic fw-bold m-0 p-0" style="font-size:1.5vw;">MyPlaylist</p>
+                        </div>
                     </a>
                 </div>
             </nav>
         </nav>
     </div>
 
-    <div th:fragment="footer">
-        <div class="bg-dark container-fluid text-white pt-4 d-flex flex-fill justify-content-center">
+    <div th:fragment="footer" style="margin-top:auto;">
+        <div class="bg-dark container-fluid text-white pt-4 d-flex flex-fill justify-content-center ">
             <div class="col-8 d-flex justify-content-between flex-wrap ">
                 <div style="width:30%">
-                    <h6 class="fst-italic text-center">MyPlaylist</h6>
-                    <p style="font-size:70%;" class="pb-2 m-0 text-center">Código publicado bajo la licencia MIT.</p>
-                    <p style="text-align: justify;">Crea y personaliza tu propia playlist de acuerdo con tus gustos musicales.</p>
+                    <h6 class="fst-italic text-center" style="font-size:1.2vw;">MyPlaylist</h6>
+                    <p style="font-size:70%; font-size:0.9vw;" class="pb-2 m-0 text-center">Código publicado bajo la licencia MIT.</p>
+                    <p style="text-align: justify; font-size:1.2vw;">Crea y personaliza tu propia playlist de acuerdo con tus gustos musicales.</p>
                 </div>
-                <div>
-                    <h6 class="text-center">EQUIPO</h6>
+                <div class="vr"></div>
+                <div style="font-size:1.2vw;">
+                    <h6 class="text-center" style="font-size:1.2vw;">EQUIPO</h6>
                     <ul>
                         <li >Lizbeth Cortés León</li>
                         <li class="pt-2">Osvaldo Guerra Lanuza</li>
                         <li class="pt-2">Axel Uriel Neri Lucero</li>
                     </ul>
                 </div>
-                <div style="width:14%; ">
-                    <h6 class="text-center">CONTACTO</h6>
-                    <div class="d-flex justify-content-between">
+                <div class="vr"></div>
+                <div style="width:14%; font-size:1.2vw;">
+                    <h6 class="text-center" style="font-size:1.2vw;">CONTACTO</h6>
+                    <div class="d-flex justify-content-evenly">
                         <a href="https://www.facebook.com/lizzy.leon.5070?mibextid=ZbWKwL">
                             <img th:src="@{/images/fb.jpg}" class="img-fluid rounded">
                         </a>
@@ -50,9 +56,9 @@
                             <img th:src="@{/images/tw.jpg}" class="img-fluid rounded">
                         </a>
                     </div>
-                    <div class="d-flex justify-content-between pt-1">
+                    <div class="d-flex justify-content-evenly pt-1">
                         <a href="/#">
-                            <img th:src="@{/images/fb.jpg}" class="img-fluid rounded">
+                            <img th:src="@{/images/fb.jpg}" class="img-fluid rounded" style="width:100%;">
                         </a>
                         <a href="/#">
                             <img th:src="@{/images/in.jpg}" class="img-fluid rounded">
@@ -61,7 +67,7 @@
                             <img th:src="@{/images/tw.jpg}" class="img-fluid rounded">
                         </a>
                     </div>
-                    <div class="d-flex justify-content-between pt-1">
+                    <div class="d-flex justify-content-evenly pt-1">
                         <a href="/#">
                             <img th:src="@{/images/fb.jpg}" class="img-fluid rounded">
                         </a>
@@ -77,5 +83,7 @@
 
         </div>
     </div>
+
+
 </body>
 </html>

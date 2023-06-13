@@ -10,35 +10,35 @@
     <meta charset="UTF-8">
     <title>Agregar canción</title>
 </head>
-<body style="background-image: url('/images/morado.jpeg'); background-size: cover; background-repeat: no-repeat; ">
-<div th:replace="fragments::header"></div>
+<body style="background-image: url('/images/morado.jpeg'); background-size: cover; background-repeat: no-repeat; min-height:100vh; display:flex; flex-direction:column;">
+<div th:replace="~{fragments::header}"></div>
 
-<div class="d-flex mt-5 justify-content-center pb-5" >
-    <div class="card text-black bg-light mb-3 border-2" style="width:50%; border-color:#72639C;">
+<div class="d-flex mt-5 justify-content-center pb-5 align-items-center">
+    <div class="card text-black bg-light mb-3 border-2" style="width:45%; border-color:#72639C;">
         <div class="card-header py-3" style="background-color: #72639C; "></div>
-        <div class="card-body" >
-            <h1 align="center" >Agregar una canción</h1>
-            <form action="/add" method="POST" class="py-2 px-4">
+        <div class="card-body " >
+            <h1 align="center" style="font-size:2.4vw;">Agregar una canción</h1>
+            <form action="/add" method="POST" class="py-2 px-4 vstack gap-1" style="font-size:1.1vw;">
                 <div class="form-group mt-3 d-flex justify-content-between">
                     <label class="mb-1 col-2">Nombre:</label>
-                    <input type="text" name="name" id="name"/><br/>
+                    <input type="text" name="name" id="name" required/><br/>
                 </div>
                 <div class="form-group mt-3 d-flex justify-content-between">
                     <label class="mb-1 col-2">Álbum:</label>
-                    <input type="text" name="album" id="album"/><br/>
+                    <input type="text" name="album" id="album" required/><br/>
                 </div>
                 <div class="form-group mt-3 d-flex justify-content-between">
                     <label class="mb-1 col-2">Artista:</label>
-                    <input type="text" name="artist" id="artist"/><br/>
+                    <input type="text" name="artist" id="artist" required/><br/>
                 </div>
                 <div class="d-flex flex-row flex-fill">
                     <div class="form-group mt-3 d-flex flex-row flex-fill justify-content-between">
                         <label class="mb-1" style="width:47%;">Género:</label>
-                        <input type="text" name="genre" id="genre"/><br/>
+                        <input type="text" name="genre" id="genre" required/><br/>
                     </div>
                     <div class="form-group mt-3 d-flex flex-row flex-fill justify-content-end pe-2">
                         <label class="mb-1 pe-4">Año:</label>
-                        <input type="text" name="year" id="year" style="width:60%;"/><br/>
+                        <input type="text" name="year" id="year" style="width:60%;" maxlength="4" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required/><br/>
                     </div>
                 </div>
 
@@ -47,14 +47,15 @@
                     <input type="text" name="urlImage" id="urlImage"/><br/>
                 </div>
                 <div class="d-flex justify-content-between mx-5 mt-3">
-                    <input class="btn btn-light align-middle rounded-1" style="border: 4px outset black; border-color:#72639C;" type="submit" value="Guardar">
-                    <a class="btn btn-light align-middle rounded-1" href="/inicio" role="button" style="border: 4px outset;">Cancelar</a>
+                    <input class="btn btn-light align-middle rounded-1" style="border: 5px outset black; border-color:#72639C; font-size:1.1vw;" type="submit" value="Guardar">
+                    <a class="btn btn-light align-middle rounded-1" href="/inicio" role="button" style="border: 5px outset; font-size:1.1vw;">Cancelar</a>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-<div th:replace="fragments::footer"></div>
+<div th:replace="~{fragments::footer}"></div>
+
 </body>
 </html>
