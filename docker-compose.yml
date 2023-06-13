@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  api:
+    container_name: api
+    build: ./ico.smvc/
+    ports:
+      - 8090:8090
+    environment:
+      - MYSQL_HOST=mysqldb
+    depends_on:
+      - mysqldb
+  frontend:
+    build: ./musica/musica/
+    ports:
+      - 8888:8888
+    depends_on:
+     - api
+  mysqldb:
+    container_name: mysqldb
+    image: "mysql:8.0"
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+    volumes:
+      - ./ico.smvc/src/main/resources/sqlscript.sql:/docker-entrypoint-initdb.d/sqlscript.sql

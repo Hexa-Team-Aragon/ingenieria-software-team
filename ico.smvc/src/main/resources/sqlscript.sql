@@ -1,4 +1,5 @@
 CREATE DATABASE music;
+USE music;
 CREATE TABLE canciones (
   id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL,
@@ -20,7 +21,3 @@ INSERT INTO canciones (id, name, album, artist, genre, year, url_image) VALUES
 (8, 'Crazy Sexy Cool', 'Dream Part.02', 'ASTRO', 'K-Pop', 2017, 'https://upload.wikimedia.org/wikipedia/en/0/02/Dream_part-02.jpg'),
 (9, 'After Midnight', 'Switch On', 'ASTRO', 'K-Pop', 2021, 'https://img.kpopmap.com/780x0/2021/08/ASTRO-Switch-On-Comeback_appearance-scaled.jpg'),
 (10, 'Blue Flame', 'Blue Flame', 'ASTRO', 'K-Pop', 2019, 'https://e-cdn-images.dzcdn.net/images/cover/f3621bb2e026389d6574df8d7c6d29a4/264x264-000000-80-0-0.jpg');
-
-CREATE USER 'usermu'@'localhost' IDENTIFIED BY '1234';
-GRANT ALL PRIVILEGES ON music.* TO 'usermu'@'localhost';
-FLUSH PRIVILEGES;

@@ -10,12 +10,15 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import org.springframework.ui.Model;
 import reactor.core.publisher.Mono;
+
+import java.net.URL;
 import java.util.List;
 
 @Controller
 public class musicaController {
 
     private final WebClient webClient;
+    private final String URL_BASE = "http://api:8090/api/playlist";
 
     @Autowired
     public musicaController(WebClient webClient) {
@@ -24,13 +27,11 @@ public class musicaController {
 
     @GetMapping("/inicio")
     public String getIndex(Model model){
-        String url = "http://localhost:8090/api/playlist";
         Flux<Song> songsFlux = webClient.get()
-                .uri(url)
+                .uri(URL_BASE)
                 .retrieve()
                 .bodyToFlux(new ParameterizedTypeReference<Song>() {
                 });
-
         List<Song> songs = songsFlux.collectList().block();
         model.addAttribute("songs", songs);
         return "index";
@@ -38,13 +39,11 @@ public class musicaController {
 
     @GetMapping("/delete/{id}")
     public String deleteSong(@PathVariable int id){
-        String url = "http://localhost:8090/api/playlist/delete/{id}";
         Mono<Void> resultMono = webClient.delete()
-                .uri(url,id)
+                .uri(URL_BASE+"/delete/{id}",id)
                 .retrieve()
                 .bodyToMono(Void.class);
         resultMono.block();
-
         return "redirect:/inicio";
     }
 
@@ -58,16 +57,13 @@ public class musicaController {
             @ModelAttribute("urlImage") String urlImage
     ) {
         Song song = new Song(0,name,album,artist,genre,year,urlImage);
-        String url = "http://localhost:8090/api/playlist/create";
-
         Mono<String> resultMono = webClient.post()
-                .uri(url)
+                .uri(URL_BASE+"/create")
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(song)
                 .retrieve()
                 .bodyToMono(String.class);
         resultMono.block();
-
         return "redirect:/inicio";
     }
 
@@ -82,16 +78,13 @@ public class musicaController {
             @ModelAttribute("urlImage") String urlImage
     ) {
         Song song = new Song(id,name,album,artist,genre,year,urlImage);
-        String url = "http://localhost:8090/api/playlist/update";
-
         Mono<String> resultMono = webClient.patch()
-                .uri(url)
+                .uri(URL_BASE+"/update")
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(song)
                 .retrieve()
                 .bodyToMono(String.class);
         resultMono.block();
-
         return "redirect:/inicio";
     }
 
@@ -100,12 +93,10 @@ public class musicaController {
 
     @GetMapping("/view/editar/{id}")
     public String editViewSong(@PathVariable int id, Model model) {
-        String url = "http://localhost:8090/api/playlist/{id}";
         Mono<Song> songMono = webClient.get()
-                .uri(url,id)
+                .uri(URL_BASE+"/{id}",id)
                 .retrieve()
                 .bodyToMono(Song.class);
-
         Song result = songMono.block();
         model.addAttribute("song",result);
         return "editar";
@@ -113,12 +104,10 @@ public class musicaController {
 
     @GetMapping("/inicio/detallesCancion/{id}")
     public String getSong(@PathVariable int id, Model model) {
-        String url = "http://localhost:8090/api/playlist/{id}";
         Mono<Song> songMono = webClient.get()
-                .uri(url,id)
+                .uri(URL_BASE+"/{id}",id)
                 .retrieve()
                 .bodyToMono(Song.class);
-
         Song result = songMono.block();
         model.addAttribute("song",result);
         return "detallesCancion";
@@ -126,13 +115,11 @@ public class musicaController {
 
     @GetMapping("/inicio/detallesAlbum/{album}")
     public String getAlbum(@PathVariable String album, Model model) {
-        String url = "http://localhost:8090/api/playlist/album/{album}";
         Flux<Song> songsFlux = webClient.get()
-                .uri(url,album)
+                .uri(URL_BASE+"/album/{album}",album)
                 .retrieve()
                 .bodyToFlux(new ParameterizedTypeReference<Song>() {
                 });
-
         List<Song> songs = songsFlux.collectList().block();
         model.addAttribute("songs", songs);
         return "detallesAlbum";
